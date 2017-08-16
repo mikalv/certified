@@ -36,6 +36,11 @@ fi
 [ "$CN" ] || usage 1
 : ${NAME:="$(echo "$CN" | tr "[:upper:]" "[:lower:]" | tr " " "-")"}
 
+
+# Remove password from log
+MESSAGE=$(echo $MESSAGE | perl -pe "s#(?P<arg>password=(\")?(?P<pw>.*?))(?=\W)#password=secret#g" | sed 's/"//g' )
+
+
 mkdir -p "$DB/certs"
 cd "$DB"
 

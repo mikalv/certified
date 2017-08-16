@@ -59,6 +59,11 @@ then . "$DB/defaults.sh"
 fi
 [ "$C" -a "$L" -a "$O" -a "$CN" -o "$REVOKE" ] || usage 1
 
+
+# Remove password from log
+MESSAGE=$(echo $MESSAGE | perl -pe "s#(?P<arg>password=(\")?(?P<pw>.*?))(?=\W)#password=secret#g" | sed 's/"//g' )
+
+
 mkdir -p "$DB/certs" "$DB/private"
 cd "$DB"
 

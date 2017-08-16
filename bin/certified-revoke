@@ -43,6 +43,11 @@ fi
 : ${ISSUER_NAME:="$(echo "$ISSUER" | tr "[:upper:]" "[:lower:]" | tr " " "-")"}
 : ${REASON:="unspecified"}
 
+
+# Remove password from log
+MESSAGE=$(echo $MESSAGE | perl -pe "s#(?P<arg>password=(\")?(?P<pw>.*?))(?=\W)#password=secret#g" | sed 's/"//g' )
+
+
 mkdir -p "$DB/crl"
 cd "$DB"
 
