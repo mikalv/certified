@@ -77,7 +77,7 @@ fi
 if is_dns "$CN"
 then SAN_DNS="$CN $SAN_DNS"
 fi
-: ${ISSUER:="ca"}
+: ${ISSUER:="intermediate-ca"}
 : ${ISSUER_NAME:="$(echo "$ISSUER" | tr "[:upper:]" "[:lower:]" | tr " " "-")"}
 
 

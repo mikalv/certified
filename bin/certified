@@ -69,7 +69,7 @@ then . "$DB/defaults.sh"
 fi
 [ "$CN" ] || usage 1
 : ${NAME:="$(echo "$CN" | tr "[:upper:]" "[:lower:]" | tr " " "-")"}
-: ${ISSUER:="ca"}
+: ${ISSUER:="intermediate-ca"}
 : ${ISSUER_NAME:="$(echo "$ISSUER" | tr "[:upper:]" "[:lower:]" | tr " " "-")"}
 
 
